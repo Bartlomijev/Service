@@ -3,19 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Start</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Viewer</title>
 </head>
-<body>
-
-
-<h1>Witaj pracowniku!</h1> 
-
-<a href="main?get=show">Pokaż wszystkie urządzenia</a> <br>
-<a href="main?get=add">Dodaj urządzenie</a> <br>
-<a href="main?get=remove">Usuń urządzenie</a> <br>
-<a href="main?get=update">Zmień status urządzenia</a> <br>
-
-
-
+<body>    
+<h1>Witaj pracowniku!</h1>
+ <br>
+<a href="createForm.jsp">dodaj sprzęt</a> <br>
+<a href="readForm.jsp">znajdź sprzęt</a>  <br>
+<a href="updateForm.jsp">zmień status sprzętu</a>  <br>
+<a href="deleteForm.jsp">usuń sprzęt</a>  <br>
+ 
 </body>
 </html>

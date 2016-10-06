@@ -7,20 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1>Podaj dane sprzętu: </h1>
-    <form action="InputServlet">
-
-       Id sprzętu: <br>
-        <input type="text" name="deviceName"><br>
-       Status produktu:<br>
-       
-       <input type="radio" name="repairStatus" value="repaired">naprawiony<br>
-        <input type="radio" name="repairStatus" value="unrepaired">zepsuty<br>
-       	<br>
-         <input type="submit" value="Wyślij"><br>
+	<form action="DeviceServlet" method="post">    
+        <input placeHolder="id" type="text" name="id">
+        <br>        
+        <input placeHolder="status naprawy true/false" type="text" name="repairStatus"> 
+        <br>
+        <input type="submit" name="option" value="update">
     </form>
-
-<a href="index.jsp">powrót do strony głównej</a> <br>
 </body>
 </html>
