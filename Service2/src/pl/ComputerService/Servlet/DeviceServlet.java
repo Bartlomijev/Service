@@ -37,13 +37,11 @@ public class DeviceServlet extends HttpServlet {
         if("search".equals(option)) {
             device = dao.read(id);
             result = device!=null? true:false;
-            System.out.println("robi sie search");
             operation = "search";
         } else if("add".equals(option)) {
             device = new Device(id, deviceName, repairStatus, clientName, address);
             result = dao.create(device);
             operation = "add";
-            System.out.println("robi siê add");
         } else if("update".equals(option)) {
             device = new Device(id, deviceName, repairStatus, clientName, address);
             result = dao.update(device);

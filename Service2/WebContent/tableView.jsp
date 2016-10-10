@@ -12,7 +12,8 @@
 
     <h1>Wynik zapytania <%= request.getAttribute("option") %></h1>
     
-    <h2>Lista urządzeń</h2>
+    <%if (request.getAttribute("option").equals("add") || request.getAttribute("option").equals("search")){ %>
+ 
     <table style="width:50%" border="1">
     <tr>
         <th>ID</th>
@@ -31,6 +32,44 @@
     </tr>
     
     </table>
+    <%} %>
+    
+    
+    
+    <%if (request.getAttribute("option").equals("update")){ %>
+    
+    <table style="width:50%" border="1">
+    <tr>
+       <th>ID</th>  
+           <th>Status naprawy</th>
+    </tr>
+   
+    <tr>
+        <th><%= device.getId() %></th>
+        <th><%= device.isRepairStatus() %></th>
+    </tr>
+    
+    </table>
+    <%} %>
+    
+    
+   
+    <%if (request.getAttribute("option").equals("delete")){ %>
+   
+    <table style="width:50%" border="1">
+    <tr>
+        <th>ID</th>
+    </tr>
+   
+    <tr>
+        <th><%= device.getId() %></th>
+    </tr>
+    
+    </table>
+    <%} %>
+    
+    
+    
 <a href="index.jsp">powrót do strony głównej</a> 
 </body>
 
