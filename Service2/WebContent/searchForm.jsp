@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="DeleteServlet" method="post">
-       <input placeHolder="id" type="text" name="deviceId"> <br>
-       <input type="submit" name="option" value="delete">
-</form>
+	<form action="SearchServlet" method="post">   
+        <input placeHolder="id" type="text" name="deviceId">  <br>    
+        <input type="submit" name="option" value="search">
+	</form>
 </body>
 </html>

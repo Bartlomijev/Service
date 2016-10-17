@@ -4,13 +4,89 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  
   <servlet>
-    <servlet-name>DeviceServlet</servlet-name>
-    <servlet-class>pl.ComputerService.Servlet.DeviceServlet</servlet-class>
+    <servlet-name>CreateServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.device.CreateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeviceServlet</servlet-name>
-    <url-pattern>/DeviceServlet</url-pattern>
+    <servlet-name>CreateServlet</servlet-name>
+    <url-pattern>/CreateServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.device.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/DeleteServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.device.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/SearchServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>UpdateServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.device.UpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateServlet</servlet-name>
+    <url-pattern>/UpdateServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ClientServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.user.ClientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClientServlet</servlet-name>
+    <url-pattern>/ClientServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.user.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ManagerServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.user.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerServlet</servlet-name>
+    <url-pattern>/ManagerServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.user.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicemanServlet</servlet-name>
+    <servlet-class>pl.ComputerService.Servlet.user.ServicemanServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServicemanServlet</servlet-name>
+    <url-pattern>/ServicemanServlet</url-pattern>
+  </servlet-mapping>
+  
+  
  
 </web-app>

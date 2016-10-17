@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="DeviceServlet" method="post">   
-        <input placeHolder="id" type="text" name="id">  <br>    
-        <input type="submit" name="option" value="search">
-	</form>
+<h2> Błąd logowania! </h2>
+<p> Wprowadziłeś niepoprawny login lub hasło</p>
 </body>
 </html>

@@ -7,16 +7,12 @@
 <title>Viewer</title>
 </head>
 <body>    
-<h1>Witaj!</h1>
+<h1>Welcome manager!</h1>
  <br>
-<!-- <a href="clientIndex.jsp">client zone</a> <br>
-<a href="servicemanIndex.jsp">employee zone</a><br>
-<a href="managerIndex.jsp">manager zone</a><br> -->
-<a href="login.jsp">sign in</a><br>
-<br>
-<br>
-<br>
-<a href="registerForm.jsp">register</a> <br>
+<a href="createForm.jsp">dodaj sprzęt</a> <br>
+<a href="searchForm.jsp">znajdź sprzęt</a>  <br>
+<a href="updateForm.jsp">zmień status sprzętu</a>  <br>
+<a href="deleteForm.jsp">usuń sprzęt</a>  <br>
  
 </body>
 </html>

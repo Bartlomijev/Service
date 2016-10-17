@@ -4,16 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>login</title>
 </head>
 <body>
-	<form action="CreateServlet" method="post" >
-        <input placeHolder="model of device" type="text" name="deviceName">
+<body>
+    <h1>Welcome! prove your identity</h1>
+    <form action="LoginServlet" method="post">
+        <input placeHolder="login" type="text" name="username">
         <br>
-        <input placeHolder="description of the problem" type="text" name="deviceDescription">
+        <input placeHolder="password" type="password" name="password">
         <br>
-        <input type="submit" name="option" value="add">
+        <input type="submit" value="sign in">
     </form>
-    <a href="tableView.jsp">podgląd tabeli</a> 
+</body>
 </body>
 </html>

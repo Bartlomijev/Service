@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>NIESTETY  WYSTAPIL   BLAD!</h1>
+<a href="index.jsp">go back to mainpage</a> <br>
 </body>
 </html>

@@ -7,16 +7,10 @@
 <title>Viewer</title>
 </head>
 <body>    
-<h1>Witaj!</h1>
+<h1>Welcome dear customer!</h1>
  <br>
-<!-- <a href="clientIndex.jsp">client zone</a> <br>
-<a href="servicemanIndex.jsp">employee zone</a><br>
-<a href="managerIndex.jsp">manager zone</a><br> -->
-<a href="login.jsp">sign in</a><br>
-<br>
-<br>
-<br>
-<a href="registerForm.jsp">register</a> <br>
+<a href="createForm.jsp">add device</a> <br>
+
  
 </body>
 </html>

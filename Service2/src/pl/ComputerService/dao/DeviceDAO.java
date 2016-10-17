@@ -10,10 +10,10 @@ import pl.ComputerService.provider.ConnectionProvider;
  
 public class DeviceDAO {
  
-	final String READ = "SELECT ADDRESS, CLIENT_NAME, DEVICE_NAME, ID, REPAIR_STATUS FROM device WHERE ID = ?;";
-	final String CREATE = "INSERT INTO device(ID, ADDRESS, CLIENT_NAME, DEVICE_NAME, REPAIR_STATUS) VALUES(?, ?, ?, ?, ?);";
-	final String UPDATE = "UPDATE device SET REPAIR_STATUS = ? WHERE ID = ?;";
-	final String DELETE = "DELETE FROM device WHERE ID = ?;";
+	final String SEARCH = "SELECT DEVICE_ID, DEVICE_NAME, PROBLEM_DESCRIPTION, REPAIR_STATUS FROM device WHERE DEVICE_ID = ?;";
+	final String CREATE = "INSERT INTO device(DEVICE_ID, DEVICE_NAME, PROBLEM_DESCRIPTION, REPAIR_STATUS) VALUES(?, ?, ?, ?);";
+	final String UPDATE = "UPDATE device SET REPAIR_STATUS = ? WHERE DEVICE_ID = ?;";
+	final String DELETE = "DELETE FROM device WHERE DEVICE_ID = ?;";
  
     public boolean create(Device device) {
         Connection conn = null;
@@ -22,11 +22,10 @@ public class DeviceDAO {
         try {
             conn = ConnectionProvider.getConnection();
             prepStmt = conn.prepareStatement(CREATE);
-            prepStmt.setInt(1, device.getId());
-            prepStmt.setString(2, device.getAddress());
-            prepStmt.setString(3, device.getClientName());
-            prepStmt.setString(4, device.getDeviceName());
-            prepStmt.setBoolean(5, device.isRepairStatus());
+            prepStmt.setInt(1, device.getDeviceId());
+            prepStmt.setString(2, device.getDeviceName());
+            prepStmt.setString(3, device.getDeviceDescription());
+            prepStmt.setString(4, device.getDeviceRepairStatus());
             int rowsAffected = prepStmt.executeUpdate();
             if (rowsAffected > 0) {
                 result = true;
@@ -46,16 +45,15 @@ public class DeviceDAO {
         Device resultdevice = null;
         try {
             conn = ConnectionProvider.getConnection();
-            prepStmt = conn.prepareStatement(READ);
+            prepStmt = conn.prepareStatement(SEARCH);
             prepStmt.setInt(1, id);
             resultSet = prepStmt.executeQuery();
             if(resultSet.next()) {
                 resultdevice = new Device(); 
-                resultdevice.setId(resultSet.getInt("ID"));
-                resultdevice.setAddress(resultSet.getString("ADDRESS"));
-                resultdevice.setClientName(resultSet.getString("CLIENT_NAME"));
+                resultdevice.setDeviceId(resultSet.getInt("DEVICE_ID"));
                 resultdevice.setDeviceName(resultSet.getString("DEVICE_NAME"));
-                resultdevice.setRepairStatus(resultSet.getBoolean("REPAIR_STATUS"));
+                resultdevice.setDeviceDescription(resultSet.getString("PROBLEM_DESCRIPTION"));
+                resultdevice.setDeviceRepairStatus(resultSet.getString("REPAIR_STATUS"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,8 +70,8 @@ public class DeviceDAO {
         try {
             conn = ConnectionProvider.getConnection();
             prepStmt = conn.prepareStatement(UPDATE);
-            prepStmt.setBoolean(1, device.isRepairStatus());
-            prepStmt.setInt(2, device.getId());
+            prepStmt.setString(1, device.getDeviceRepairStatus());
+            prepStmt.setInt(2, device.getDeviceId());
             int rowsAffected = prepStmt.executeUpdate();
             if (rowsAffected > 0) {
                 result = true;
@@ -93,7 +91,7 @@ public class DeviceDAO {
         try {
             conn = ConnectionProvider.getConnection();
             prepStmt = conn.prepareStatement(DELETE);
-            prepStmt.setInt(1, device.getId());
+            prepStmt.setInt(1, device.getDeviceId());
             int rowsAffected = prepStmt.executeUpdate();
             if (rowsAffected > 0) {
                 result = true;

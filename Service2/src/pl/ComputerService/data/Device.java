@@ -2,30 +2,29 @@ package pl.ComputerService.data;
 
 public class Device {
 
-	
-	private int id;
+	private int deviceId;
 	private String deviceName;
-	private boolean repairStatus;
-	private String clientName;
-	private String address;
+	private String deviceDescription; 
+	private String deviceRepairStatus;
 	
-	public Device(int id, String deviceName, boolean repairStatus, String clientName, String address) {
+	public Device(int deviceId, String deviceName, String deviceDescription, String deviceRepairStatus) {
 		super();
-		this.id = id;
+		this.deviceId = deviceId;
 		this.deviceName = deviceName;
-		this.repairStatus = repairStatus;
-		this.clientName = clientName;
-		this.address = address;
+		this.deviceDescription = deviceDescription;
+		this.deviceRepairStatus = deviceRepairStatus;
 	}
 	
 	public Device() {
+		super();
 	}
 	
-	public int getId() {
-		return id;
+	
+	public int getDeviceId() {
+		return deviceId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setDeviceId(int deviceId) {
+		this.deviceId = deviceId;
 	}
 	public String getDeviceName() {
 		return deviceName;
@@ -33,30 +32,24 @@ public class Device {
 	public void setDeviceName(String deviceName) {
 		this.deviceName = deviceName;
 	}
-	public boolean isRepairStatus() {
-		return repairStatus;
+	public String getDeviceDescription() {
+		return deviceDescription;
 	}
-	public void setRepairStatus(boolean repairStatus) {
-		this.repairStatus = repairStatus;
+	public void setDeviceDescription(String deviceDescription) {
+		this.deviceDescription = deviceDescription;
 	}
-	public String getClientName() {
-		return clientName;
+	public String getDeviceRepairStatus() {
+		return deviceRepairStatus;
 	}
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setDeviceRepairStatus(String deviceRepairStatus) {
+		this.deviceRepairStatus = deviceRepairStatus;
 	}
 	
 	@Override
 	public String toString() {
-		return "Device [id=" + id + ", deviceName=" + deviceName + ", repairStatus=" + repairStatus + ", clientName="
-				+ clientName + ", address=" + address + "]";
+		return "CurrentDevice [deviceId=" + deviceId + ", deviceName=" + deviceName + ", deviceDescription="
+				+ deviceDescription + ", deviceRepairStatus=" + deviceRepairStatus + "]";
 	}
-
-}
 	
+	
+}

@@ -7,14 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="DeviceServlet" method="post">    
-        <input placeHolder="id" type="text" name="id">
+	<form action="UpdateServlet" method="post">    
+        <input placeHolder="id" type="text" name="deviceId">
         <br>        
       
         <br>
-         <input  type="radio" name="repairStatus" value="true"> naprawiony
+         <input  type="radio" name="deviceRepairStatus" value="repaired"> repaired
           <br>  
-          <input  type="radio" name="repairStatus" value="false"> zepsuty
+            <input  type="radio" name="deviceRepairStatus" value="processing"> processing
+          <br>  
+          <input  type="radio" name="deviceRepairStatus" value="unrepaired"> unrepaired
          <br>  
         <input type="submit" name="option" value="update">
     </form>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="pl.ComputerService.data.Device"%>
+<%@page import="pl.ComputerService.data.Device"%> 
 <% Device device = (Device)request.getAttribute("device"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,18 +17,16 @@
     <table style="width:50%" border="1">
     <tr>
         <th>ID</th>
-        <th>Nazwa</th>
-         <th>Dane Klienta</th>
-          <th>Adres</th>
-           <th>Status naprawy</th>
+        <th>NAME</th>
+          <th>DESCRIPTION</th>
+           <th>REPAIR STATUS</th>
     </tr>
    
     <tr>
-        <th><%= device.getId() %></th>
+        <th><%= device.getDeviceId() %></th>
         <th><%= device.getDeviceName() %></th>
-        <th><%= device.getClientName() %></th>
-        <th><%= device.getAddress() %></th>
-        <th><%= device.isRepairStatus() %></th>
+        <th><%= device.getDeviceDescription() %></th>
+          <th><%= device.getDeviceRepairStatus() %></th>
     </tr>
     
     </table>
@@ -41,12 +39,12 @@
     <table style="width:50%" border="1">
     <tr>
        <th>ID</th>  
-           <th>Status naprawy</th>
+        <th>Status naprawy</th>
     </tr>
    
     <tr>
-        <th><%= device.getId() %></th>
-        <th><%= device.isRepairStatus() %></th>
+        <th><%= device.getDeviceId() %></th>
+        <th><%= device.getDeviceRepairStatus() %></th>
     </tr>
     
     </table>
@@ -62,11 +60,11 @@
     </tr>
    
     <tr>
-        <th><%= device.getId() %></th>
+        <th><%= device.getDeviceId() %></th>
     </tr>
     
     </table>
-    <%} %>
+    <%} %> 
     
     
     
