@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2> Błąd logowania! </h2>
-<p> Wprowadziłeś niepoprawny login lub hasło</p>
+<h2> login error! </h2>
+<p> incorrect login or password</p> <br>
+<a href="login.jsp"> try again</a> <br>
 </body>
 </html>

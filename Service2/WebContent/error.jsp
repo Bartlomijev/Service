@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>NIESTETY  WYSTAPIL   BLAD!</h1>
-<a href="index.jsp">go back to mainpage</a> <br>
+<h1>UNFORTUNATELY AN ERROR OCCURRED!</h1>
+<a href="index.jsp">go back to main page</a> <br>
 </body>
 </html>

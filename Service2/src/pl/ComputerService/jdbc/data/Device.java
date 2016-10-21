@@ -1,13 +1,14 @@
-package pl.ComputerService.data;
+package pl.ComputerService.jdbc.data;
 
 public class Device {
 
 	private int deviceId;
 	private String deviceName;
 	private String deviceDescription; 
-	private String deviceRepairStatus;
+	private DeviceRepairStatus deviceRepairStatus;
 	
-	public Device(int deviceId, String deviceName, String deviceDescription, String deviceRepairStatus) {
+	
+	public Device(int deviceId, String deviceName, String deviceDescription, DeviceRepairStatus deviceRepairStatus) {
 		super();
 		this.deviceId = deviceId;
 		this.deviceName = deviceName;
@@ -39,16 +40,16 @@ public class Device {
 		this.deviceDescription = deviceDescription;
 	}
 	public String getDeviceRepairStatus() {
-		return deviceRepairStatus;
+		return deviceRepairStatus.getRepairStatusDescription();
 	}
 	public void setDeviceRepairStatus(String deviceRepairStatus) {
-		this.deviceRepairStatus = deviceRepairStatus;
+		this.deviceRepairStatus = EnumDescription.deviceFromDescription(deviceRepairStatus) ;
 	}
 	
 	@Override
 	public String toString() {
 		return "CurrentDevice [deviceId=" + deviceId + ", deviceName=" + deviceName + ", deviceDescription="
-				+ deviceDescription + ", deviceRepairStatus=" + deviceRepairStatus + "]";
+				+ deviceDescription + ", deviceRepairStatus=" + deviceRepairStatus.getRepairStatusDescription() + "]";
 	}
 	
 	

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.ComputerService.dao.DeviceDAO;
-import pl.ComputerService.data.Device;
+import pl.ComputerService.jdbc.dao.DeviceDAO;
+import pl.ComputerService.jdbc.data.Device;
 
 
 
@@ -17,13 +17,12 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("deviceId"));
-        //String deviceRepairStatus = request.getParameter("")
         DeviceDAO dao = new DeviceDAO();
-        Device device = null;
-        String operation = null;
+        Device device;
+        String operation;
         boolean result = false;
        
-            device = dao.read(id);
+            device = dao.selectById(id);
             result = device!=null? true:false;
             operation = "search";
         

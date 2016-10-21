@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.ComputerService.dao.DeviceDAO;
-import pl.ComputerService.data.Device;
+import pl.ComputerService.jdbc.dao.DeviceDAO;
+import pl.ComputerService.jdbc.data.Device;
+import pl.ComputerService.jdbc.data.DeviceRepairStatus;
+import pl.ComputerService.jdbc.data.EnumDescription;
 
 
 
@@ -17,17 +19,17 @@ public class UpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
         int deviceId = Integer.parseInt(request.getParameter("deviceId"));
-    	String deviceName = null;
+        DeviceRepairStatus deviceRepairStatus = EnumDescription.deviceFromDescription(request.getParameter("deviceRepairStatus"));
+        String deviceName = null;
     	String deviceDescription = null;
-    	String deviceRepairStatus = request.getParameter("deviceRepairStatus");
         DeviceDAO dao = new DeviceDAO();
-        Device device = null;
-        String operation = null;
+        Device device;
+        String operation;
         boolean result = false;
         
       
             device = new Device(deviceId, deviceName, deviceDescription, deviceRepairStatus);
-            result = dao.update(device);
+            result = dao.updateDevice(device);
             operation = "update";
         
         if(device != null && result) {

@@ -1,4 +1,4 @@
-package pl.ComputerService.provider;
+package pl.ComputerService.jdbc.provider;
  
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,7 +10,8 @@ import javax.sql.DataSource;
  
 public class ConnectionProvider {
     private static DataSource dataSource;
-     
+    
+    
     public static Connection getConnection() throws SQLException {
         return getDSInstance().getConnection();
     }

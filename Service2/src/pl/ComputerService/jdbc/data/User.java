@@ -1,19 +1,18 @@
-package pl.ComputerService.data;
+package pl.ComputerService.jdbc.data;
 
 public class User {
-
+ 
 	private int userId;
 	private String userName;
 	private String userPassword;
 	private String userEmail;
 	private String userFirstAndLastName;
-	private String userRoleName;
+	private UserRoleName userRoleName;
 	private String userPhoneNumber;
 	private String userAddress;
-	
 
 	public User(int userId, String userName, String userPassword, String userEmail, String userFirstAndLastName,
-			String userRoleName, String userPhoneNumber, String userAddress) {
+			UserRoleName userRoleName, String userPhoneNumber, String userAddress) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -60,10 +59,10 @@ public class User {
 		this.userFirstAndLastName = userFirstAndLastName;
 	}
 	public String getUserRoleName() {
-		return userRoleName;
+		return userRoleName.getRoleDescription();
 	}
 	public void setUserRoleName(String userRoleName) {
-		this.userRoleName = userRoleName;
+		this.userRoleName = EnumDescription.userFromDescription(userRoleName);
 	}
 	
 	public String getUserPhoneNumber() {
@@ -85,9 +84,12 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword + ", userEmail="
-				+ userEmail + ", userFirstAndLastName=" + userFirstAndLastName + ", userRoleName=" + userRoleName
+				+ userEmail + ", userFirstAndLastName=" + userFirstAndLastName + ", userRoleName=" + userRoleName.getRoleDescription()
 				+ ", userPhoneNumber=" + userPhoneNumber + ", userAddress=" + userAddress + "]";
 	}
+
+	
+	
 	
 	
 	

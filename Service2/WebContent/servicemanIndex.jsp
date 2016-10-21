@@ -7,12 +7,12 @@
 <title>Viewer</title>
 </head>
 <body>    
-<h1>Witaj pracowniku!</h1>
+<h1>Welcome employee!</h1>
  <br>
 
-<a href="searchForm.jsp">znajdź sprzęt</a>  <br>
-<a href="updateForm.jsp">zmień status sprzętu</a>  <br>
-<a href="deleteForm.jsp">usuń sprzęt</a>  <br>
+<a href="searchForm.jsp">search device </a>  <br>
+<a href="updateForm.jsp">change repair status</a>  <br>
+<a href="deleteForm.jsp">delete device</a>  <br>
  
 </body>
 </html>

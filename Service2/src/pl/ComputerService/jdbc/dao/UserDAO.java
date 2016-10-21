@@ -1,27 +1,26 @@
-package pl.ComputerService.dao;
+package pl.ComputerService.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import pl.ComputerService.data.Device;
-import pl.ComputerService.data.User;
-import pl.ComputerService.provider.ConnectionProvider;
+import pl.ComputerService.jdbc.data.User;
+import pl.ComputerService.jdbc.provider.ConnectionProvider;
+import pl.ComputerService.jdbc.selects.UserSelects;
 
 public class UserDAO {
 
 	
-	final String CREATE = "INSERT INTO user(USER_ID, USERNAME, PASSWORD, EMAIL, FIRST_AND_LAST_NAME, ROLE_NAME, PHONE_NUMBER, ADDRESS) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
-	final String SEARCH = "SELECT USER_ID, PASSWORD, ROLE_NAME FROM user WHERE USERNAME = ?;";
 	
-	public boolean create(User user) {
+	
+	public boolean createNewUser(User user) {
 	        Connection conn = null;
 	        PreparedStatement prepStmt = null;
 	        boolean result = false;
 	        try {
 	            conn = ConnectionProvider.getConnection();
-	            prepStmt = conn.prepareStatement(CREATE);
+	            prepStmt = conn.prepareStatement(UserSelects.CREATE);
 	            prepStmt.setInt(1, user.getUserId());
 	            prepStmt.setString(2, user.getUserName());
 	            prepStmt.setString(3, user.getUserPassword());
@@ -42,14 +41,14 @@ public class UserDAO {
 	        return result;
 	    }
 	 
-	 public User read(String userName) {
+	 public User selectByUsername(String userName) {
 	        Connection conn = null;
 	        PreparedStatement prepStmt = null;
 	        ResultSet resultSet = null;
 	        User resultUser = null;
 	        try {
 	            conn = ConnectionProvider.getConnection();
-	            prepStmt = conn.prepareStatement(SEARCH);
+	            prepStmt = conn.prepareStatement(UserSelects.SEARCH);
 	            prepStmt.setString(1, userName);
 	            resultSet = prepStmt.executeQuery();
 	            if(resultSet.next()) {

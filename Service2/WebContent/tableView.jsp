@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="pl.ComputerService.data.Device"%> 
+    pageEncoding="UTF-8"%> 
+<%@page import="pl.ComputerService.jdbc.data.Device"%> 
 <% Device device = (Device)request.getAttribute("device"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,9 +10,13 @@
 </head>
 <body>
 
+	<%! String option; %>
+	<%	option = (String)request.getAttribute("option"); %>
     <h1>Wynik zapytania <%= request.getAttribute("option") %></h1>
     
-    <%if (request.getAttribute("option").equals("add") || request.getAttribute("option").equals("search")){ %>
+    <!-- ADD  OR  SEARCH -->
+    
+    <%if (option.equals("add") || option.equals("search")){ %>
  
     <table style="width:50%" border="1">
     <tr>
@@ -32,9 +36,9 @@
     </table>
     <%} %>
     
+    <!-- UPDATE -->
     
-    
-    <%if (request.getAttribute("option").equals("update")){ %>
+    <%if (option.equals("update")){ %>
     
     <table style="width:50%" border="1">
     <tr>
@@ -51,8 +55,9 @@
     <%} %>
     
     
+   <!-- DELETE -->
    
-    <%if (request.getAttribute("option").equals("delete")){ %>
+    <%if (option.equals("delete")){ %>
    
     <table style="width:50%" border="1">
     <tr>
@@ -66,9 +71,7 @@
     </table>
     <%} %> 
     
-    
-    
-<a href="index.jsp">powrót do strony głównej</a> 
+<a href="index.jsp">log out</a> <br>
 </body>
 
 </html>

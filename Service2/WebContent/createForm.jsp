@@ -14,6 +14,5 @@
         <br>
         <input type="submit" name="option" value="add">
     </form>
-    <a href="tableView.jsp">podgląd tabeli</a> 
 </body>
 </html>

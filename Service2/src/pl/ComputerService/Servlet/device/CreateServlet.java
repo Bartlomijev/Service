@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.ComputerService.dao.DeviceDAO;
-import pl.ComputerService.data.Device;
+import pl.ComputerService.jdbc.dao.DeviceDAO;
+import pl.ComputerService.jdbc.data.Device;
+import pl.ComputerService.jdbc.data.DeviceRepairStatus;
 
 
 public class CreateServlet extends HttpServlet {
@@ -21,15 +22,15 @@ public class CreateServlet extends HttpServlet {
 		  request.setCharacterEncoding("UTF-8");
 	        int deviceId = r.nextInt(9000000)+1000000;
 	    	String deviceName = request.getParameter("deviceName");
-	    	String deviceRepairStatus = "unrepaired";
+	    	DeviceRepairStatus deviceRepairStatus = DeviceRepairStatus.UNREPAIRED;
 	    	String deviceDescription = request.getParameter("deviceDescription");
 	        DeviceDAO dao = new DeviceDAO();
-	        Device device = null;
-	        String operation = null;
+	        Device device;
+	        String operation;
 	        boolean result = false;
 	    
 	            device = new Device(deviceId, deviceName, deviceDescription, deviceRepairStatus);
-	            result = dao.create(device);
+	            result = dao.createNewDevice(device);
 	            operation = "add";
 	        
 	          if(device != null && result) {

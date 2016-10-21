@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import pl.ComputerService.dao.UserDAO;
-import pl.ComputerService.data.User;
+import pl.ComputerService.jdbc.dao.UserDAO;
+import pl.ComputerService.jdbc.data.User;
+import pl.ComputerService.jdbc.data.UserRoleName;
+import pl.ComputerService.jdbc.data.EnumDescription;
 
 
 
@@ -29,18 +30,18 @@ public class RegisterServlet extends HttpServlet {
 			String userPassword = request.getParameter("userPassword");
 			String userEmail = request.getParameter("userEmail");
 			String userFirstAndLastName = request.getParameter("userFirstName") + " " + request.getParameter("userLastName");
-		 String userRoleName = "client_role";
+		 UserRoleName userRoleName = EnumDescription.userFromDescription("client_role");
 		 String userPhoneNumber = request.getParameter("userPhone");
 		 String userAddress = request.getParameter("userAddress");
-		    
-		    	UserDAO dao = new UserDAO();
+		     
+		 UserDAO dao = new UserDAO();
 		      
-		    	User user = null;
-		        String operation = null;
+		    	User user;
+		        String operation;
 		        boolean result = false;
 		    
 		            user = new User(userId, userName, userPassword, userEmail, userFirstAndLastName, userRoleName, userPhoneNumber, userAddress);
-		            result = dao.create(user);
+		            result = dao.createNewUser(user);
 		            operation = "add";
 		        
 		          if(user != null && result) {
