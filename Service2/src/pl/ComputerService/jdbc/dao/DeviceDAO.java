@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import pl.ComputerService.jdbc.data.Device;
 import pl.ComputerService.jdbc.provider.ConnectionProvider;
@@ -11,7 +14,7 @@ import pl.ComputerService.jdbc.selects.DeviceSelects;
  
 public class DeviceDAO {
  
-
+	List<Device> allData; 
 	
     public boolean createNewDevice(Device device) {
         Connection conn = null; 
@@ -46,7 +49,7 @@ public class DeviceDAO {
             prepStmt = conn.prepareStatement(DeviceSelects.SEARCH);
             prepStmt.setInt(1, id);
             resultSet = prepStmt.executeQuery();
-            if(resultSet.next()) {
+            if(resultSet.next()) { 
                 resultdevice = new Device(); 
                 resultdevice.setDeviceId(resultSet.getInt("DEVICE_ID"));
                 resultdevice.setDeviceName(resultSet.getString("DEVICE_NAME"));
@@ -59,6 +62,32 @@ public class DeviceDAO {
             releaseResources(prepStmt, resultSet, conn);
         }
         return resultdevice;
+    }
+    
+    public List<Device> readAll() {
+        Connection conn = null;
+        PreparedStatement prepStmt = null;
+        ResultSet resultSet = null;
+        Device resultDevice = null;
+        try {
+            conn = ConnectionProvider.getConnection();
+            prepStmt = conn.prepareStatement(DeviceSelects.READ_ALL);
+            resultSet = prepStmt.executeQuery();
+            allData = new ArrayList<>();
+            while(resultSet.next()) {
+                resultDevice = new Device();
+                resultDevice.setDeviceId(resultSet.getInt("DEVICE_ID"));
+                resultDevice.setDeviceName(resultSet.getString("DEVICE_NAME"));
+                resultDevice.setDeviceDescription(resultSet.getString("PROBLEM_DESCRIPTION"));
+                resultDevice.setDeviceRepairStatus(resultSet.getString("REPAIR_STATUS"));
+                allData.add(resultDevice);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            releaseResources(prepStmt, resultSet, conn);
+        }
+        return allData;
     }
  
     public boolean updateDevice(Device device) {

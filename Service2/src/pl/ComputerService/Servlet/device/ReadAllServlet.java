@@ -1,6 +1,9 @@
 package pl.ComputerService.Servlet.device;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,33 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import pl.ComputerService.jdbc.dao.DeviceDAO;
 import pl.ComputerService.jdbc.data.Device;
-import pl.ComputerService.jdbc.data.DeviceRepairStatus;
 
 
-
-public class DeleteServlet extends HttpServlet {
+public class ReadAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+    
+   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("hurrej");
-        int deviceId = Integer.parseInt(request.getParameter("deviceId"));
-    	String deviceName = null;
-    	String deviceDescription = null;
-    	DeviceRepairStatus deviceRepairStatus = null;
         DeviceDAO dao = new DeviceDAO();
-        Device device;
+        List<Device> allDevicesList = new ArrayList<>(); 
         String operation;
         boolean result = false;
-             	
-            device = new Device(deviceId, deviceName, deviceDescription, deviceRepairStatus);
-            result = dao.deleteDevice(device);
-            operation = "delete";
+       
+        allDevicesList = dao.readAll();
+            result = allDevicesList!=null? true:false;
+            operation = "readAll";
         
-        if(device != null && result) {
+        
+        if(allDevicesList != null && result) {
             request.setAttribute("option", operation);
-            request.setAttribute("device", device);          
+            request.setAttribute("list", allDevicesList);          
             request.getRequestDispatcher("tableView.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("error.jsp").forward(request, response);

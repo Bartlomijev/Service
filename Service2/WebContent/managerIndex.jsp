@@ -13,6 +13,8 @@
 <a href="searchForm.jsp">search device</a>  <br>
 <a href="updateForm.jsp">change repair status</a>  <br>
 <a href="deleteForm.jsp">delete device</a>  <br>
+<a href="ReadAllServlet">read all devices</a>  <br>
+
  
 </body>
 </html>

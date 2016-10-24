@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@page import="pl.ComputerService.jdbc.data.Device"%> 
+<%@page import="pl.ComputerService.jdbc.data.Device, java.util.List"%>  
 <% Device device = (Device)request.getAttribute("device"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,6 +14,36 @@
 	<%	option = (String)request.getAttribute("option"); %>
     <h1>Wynik zapytania <%= request.getAttribute("option") %></h1>
     
+    <!-- READ ALL -->
+    
+    <%if (option.equals("readAll")){ %>
+    
+    <table style="width:50%" border="1">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+          <th>DESCRIPTION</th>
+           <th>REPAIR STATUS</th>
+    </tr> 
+  
+   <% List<Device> allDevices = (List<Device>)request.getAttribute("list"); %>
+   <%
+        if(allDevices != null) {
+            for(Device d: allDevices) {
+    %>
+    <tr>
+        <th><%= d.getDeviceId() %></th>
+        <th><%= d.getDeviceName() %></th>
+        <th><%= d.getDeviceDescription() %></th>
+          <th><%= d.getDeviceRepairStatus() %></th>
+    </tr>
+    
+   
+    <%}
+        }%>
+   </table>
+   <% }%>
+ 
     <!-- ADD  OR  SEARCH -->
     
     <%if (option.equals("add") || option.equals("search")){ %>
@@ -71,7 +101,8 @@
     </table>
     <%} %> 
     
-<a href="index.jsp">log out</a> <br>
+<a href="LogoutServlet">log out</a> <br>
+<a href="AuthorisationServlet">do another operation</a> <br>
 </body>
 
 </html>
